@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://chihnvrma0xuc"]
+
+[ext_resource type="Texture2D" uid="uid://bhrvrnlc02vrj" path="res://Cowboyno-2.png" id="1_4nq1i"]
+[ext_resource type="Texture2D" uid="uid://bjd2pli4ffl1u" path="res://Cowboyno.png" id="2_3x2pc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5a5dl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4nq1i")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3x2pc")
+}],
+"loop": true,
+"name": &"nofire",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5a5dl")
+animation = &"fire"
