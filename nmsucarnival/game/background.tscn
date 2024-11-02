@@ -1,17 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwdmr5ve532ax"]
+[gd_scene load_steps=6 format=3 uid="uid://cwdmr5ve532ax"]
 
 [ext_resource type="Texture2D" uid="uid://70l6wx0u7l3e" path="res://bg.png" id="1_2uob6"]
 [ext_resource type="Script" path="res://background.gd" id="1_b8hja"]
+[ext_resource type="Script" path="res://PathFollowBehavior.gd" id="3_aujny"]
+[ext_resource type="PackedScene" uid="uid://25yvi7bddw0e" path="res://MOB.tscn" id="4_hrjce"]
 
-[sub_resource type="Curve2D" id="Curve2D_1wxp2"]
+[sub_resource type="Curve2D" id="Curve2D_mtu0v"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 911, 187, 0, 0, 0, 0, 915, 227, 0, 0, 0, 0, 199, 231, 0, 0, 0, 0, 200, 191, 0, 0, 0, 0, 911, 187)
-}
-point_count = 5
-
-[sub_resource type="Curve2D" id="Curve2D_o3mw4"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 199, 325, 0, 0, 0, 0, 920, 327, 0, 0, 0, 0, 917, 282, 0, 0, 0, 0, 201, 285, 0, 0, 0, 0, 199, 325)
+"points": PackedVector2Array(0, 0, 0, 0, 203, 187, 0, 0, 0, 0, 915, 188, 0, 0, 0, 0, 912, 232, 0, 0, 0, 0, 201, 231, 0, 0, 0, 0, 203, 187)
 }
 point_count = 5
 
@@ -24,19 +20,18 @@ scale = Vector2(0.640625, 0.494375)
 texture = ExtResource("1_2uob6")
 metadata/_edit_lock_ = true
 
-[node name="UPMOBPATH" type="Path2D" parent="."]
-curve = SubResource("Curve2D_1wxp2")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="UPMOBPATH"]
-position = Vector2(911, 187)
-rotation = 1.47113
-
-[node name="DOWNMOBPATH" type="Path2D" parent="."]
-visible = false
-curve = SubResource("Curve2D_o3mw4")
-
 [node name="MOBTIMER" type="Timer" parent="."]
-wait_time = 0.5
 autostart = true
+
+[node name="UPMOBPATH" type="Path2D" parent="."]
+curve = SubResource("Curve2D_mtu0v")
+
+[node name="BottlePathFollow" type="PathFollow2D" parent="UPMOBPATH"]
+position = Vector2(203, 187)
+rotation = 0.00140449
+script = ExtResource("3_aujny")
+
+[node name="RigidBody2D" parent="." instance=ExtResource("4_hrjce")]
+position = Vector2(133, 101)
 
 [connection signal="timeout" from="MOBTIMER" to="." method="_on_mobtimer_timeout"]
