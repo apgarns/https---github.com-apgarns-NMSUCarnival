@@ -34,3 +34,9 @@ rotation = 1.47113
 [node name="DOWNMOBPATH" type="Path2D" parent="."]
 visible = false
 curve = SubResource("Curve2D_o3mw4")
+
+[node name="MOBTIMER" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="MOBTIMER" to="." method="_on_mobtimer_timeout"]
