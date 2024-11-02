@@ -3,11 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://70l6wx0u7l3e" path="res://bg.png" id="1_2uob6"]
 [ext_resource type="Script" path="res://background.gd" id="1_b8hja"]
 [ext_resource type="Script" path="res://PathFollowBehavior.gd" id="3_aujny"]
-[ext_resource type="PackedScene" uid="uid://25yvi7bddw0e" path="res://MOB.tscn" id="4_hrjce"]
 
 [sub_resource type="Curve2D" id="Curve2D_mtu0v"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 166, -2, 0, 0, 0, 0, 913.015, -2)
+"points": PackedVector2Array(0, 0, 0, 0, 141.328, 20, 0, 0, 0, 0, 980.178, 20)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_b41k3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 181.456, -300000, 0, 0, 0, 0, 793.228, -200000)
 }
 point_count = 2
 
@@ -29,11 +34,16 @@ scale = Vector2(0.72957, -0.125)
 curve = SubResource("Curve2D_mtu0v")
 
 [node name="BottlePathFollow" type="PathFollow2D" parent="UPMOBPATH"]
-position = Vector2(166, -2)
+position = Vector2(141.328, 20)
 script = ExtResource("3_aujny")
 
-[node name="RigidBody2D" parent="." instance=ExtResource("4_hrjce")]
-visible = false
-position = Vector2(825, 52)
+[node name="BOTTOMPATH" type="Path2D" parent="."]
+position = Vector2(38.8495, 206)
+scale = Vector2(0.987296, 1e-05)
+curve = SubResource("Curve2D_b41k3")
+
+[node name="BottlePathFollow" type="PathFollow2D" parent="BOTTOMPATH"]
+position = Vector2(181.456, -300000)
+rotation = 1.56468
 
 [connection signal="timeout" from="MOBTIMER" to="." method="_on_mobtimer_timeout"]
