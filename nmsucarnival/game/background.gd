@@ -5,13 +5,15 @@ extends Node2D
 
 func _ready() -> void:
 	# Start spawning bottles repeatedly
-	spawn_bottles_repeatedly()
+	spawn_bottle_with_delay()
 
-func spawn_bottles_repeatedly():
-	# Spawn a bottle every 1 second
-	while true:
-		await get_tree().create_timer(1.0).timeout
-		spawn_bottle()
+func spawn_bottle_with_delay():
+	# Spawn a bottle
+	spawn_bottle()
+
+	# Schedule the next bottle spawn after 1 second
+	await get_tree().create_timer(1.0).timeout
+	spawn_bottle_with_delay()  # Call the function again to repeat the process
 
 func spawn_bottle():
 	# Create a new bottle instance from the scene
@@ -19,9 +21,17 @@ func spawn_bottle():
 
 	# Create a new PathFollow2D node to control the bottle's movement
 	var path_follow = PathFollow2D.new()
+	
+	# Add PathFollow2D to the path and add the bottle to the PathFollow2D
+	path.add_child(path_follow)
+	path_follow.add_child(bottle)
+
+	# Set a random position along the path
 	path_follow.progress_ratio = randf()  # Set to a random position along the path
-	path.add_child(path_follow)  # Add PathFollow2D to the path
-	path_follow.add_child(bottle)  # Add the bottle to the PathFollow2D
+
+	# Debugging output to check if the position changes
+	print("Spawned bottle at progress_ratio:", path_follow.progress_ratio)
+	print("Bottle global position after setting progress_ratio:", path_follow.global_position)
 
 	# Make the bottle visible
 	bottle.visible = true
