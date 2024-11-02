@@ -7,22 +7,19 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_3x2pc")
+}, {
+"duration": 1.0,
 "texture": ExtResource("1_4nq1i")
 }],
 "loop": true,
 "name": &"fire",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_3x2pc")
-}],
-"loop": true,
-"name": &"nofire",
-"speed": 5.0
 }]
 
 [node name="Area2D" type="Area2D"]
+position = Vector2(532, 577)
+scale = Vector2(0.25, 0.25)
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

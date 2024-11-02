@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwdmr5ve532ax"]
+[gd_scene load_steps=7 format=3 uid="uid://cwdmr5ve532ax"]
 
 [ext_resource type="Texture2D" uid="uid://70l6wx0u7l3e" path="res://bg.png" id="1_2uob6"]
 [ext_resource type="Script" path="res://background.gd" id="1_b8hja"]
 [ext_resource type="Script" path="res://PathFollowBehavior.gd" id="3_aujny"]
+[ext_resource type="PackedScene" uid="uid://chihnvrma0xuc" path="res://PLAYER.tscn" id="4_2w2uv"]
 
 [sub_resource type="Curve2D" id="Curve2D_mtu0v"]
 _data = {
@@ -45,5 +46,7 @@ curve = SubResource("Curve2D_b41k3")
 [node name="BottlePathFollow" type="PathFollow2D" parent="BOTTOMPATH"]
 position = Vector2(181.456, -300000)
 rotation = 1.56468
+
+[node name="Area2D" parent="." instance=ExtResource("4_2w2uv")]
 
 [connection signal="timeout" from="MOBTIMER" to="." method="_on_mobtimer_timeout"]
