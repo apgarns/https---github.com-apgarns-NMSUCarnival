@@ -1,10 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwdmr5ve532ax"]
+[gd_scene load_steps=5 format=3 uid="uid://cwdmr5ve532ax"]
 
 [ext_resource type="Texture2D" uid="uid://70l6wx0u7l3e" path="res://bg.png" id="1_2uob6"]
+[ext_resource type="Script" path="res://background.gd" id="1_b8hja"]
 
-[node name="BACKGROUND" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_1wxp2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 911, 187, 0, 0, 0, 0, 915, 227, 0, 0, 0, 0, 199, 231, 0, 0, 0, 0, 200, 191, 0, 0, 0, 0, 911, 187)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_o3mw4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 199, 325, 0, 0, 0, 0, 920, 327, 0, 0, 0, 0, 917, 282, 0, 0, 0, 0, 201, 285, 0, 0, 0, 0, 199, 325)
+}
+point_count = 5
+
+[node name="MAIN" type="Node2D"]
+script = ExtResource("1_b8hja")
 
 [node name="Bg" type="Sprite2D" parent="."]
 position = Vector2(557, 342)
 scale = Vector2(0.640625, 0.494375)
 texture = ExtResource("1_2uob6")
+metadata/_edit_lock_ = true
+
+[node name="UPMOBPATH" type="Path2D" parent="."]
+curve = SubResource("Curve2D_1wxp2")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="UPMOBPATH"]
+position = Vector2(911, 187)
+rotation = 1.47113
+
+[node name="DOWNMOBPATH" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_o3mw4")
