@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bw6lh1hj1onm4"
+path="res://.godot/imported/Western gun shot  free sound FX.mp3-36aa2689940ff80f46d091e9b94a8a34.mp3str"
+
+[deps]
+
+source_file="res://Western gun shot  free sound FX.mp3"
+dest_files=["res://.godot/imported/Western gun shot  free sound FX.mp3-36aa2689940ff80f46d091e9b94a8a34.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
