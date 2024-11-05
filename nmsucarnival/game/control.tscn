@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm7yypk2a18y3"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_idt4w"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_idt4w")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Time"
+
+[node name="Timer" type="Timer" parent="Label"]
+
+[connection signal="timeout" from="Label/Timer" to="." method="_on_timer_timeout"]
