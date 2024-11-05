@@ -2,7 +2,6 @@ extends AnimatedSprite2D
 
 var score = 0  # Initialize the score counter
 
-# Reference to the Label node
 @onready var ScoreLabel = $USERINTERFACE/ScoreLabel
 
 func _input(event):
