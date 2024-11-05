@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://background.gd" id="1_b8hja"]
 [ext_resource type="Script" path="res://PathFollowBehavior.gd" id="3_aujny"]
 [ext_resource type="PackedScene" uid="uid://chihnvrma0xuc" path="res://PLAYER.tscn" id="4_2w2uv"]
-[ext_resource type="PackedScene" path="res://target.tscn" id="5_to67m"]
+[ext_resource type="PackedScene" uid="uid://bfc1ppql6y7y7" path="res://target.tscn" id="5_to67m"]
 [ext_resource type="Script" path="res://score_label.gd" id="6_4hg5r"]
 
 [sub_resource type="Curve2D" id="Curve2D_mtu0v"]
