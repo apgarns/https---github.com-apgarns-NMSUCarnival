@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://bgvloraccg362"]
+
+[ext_resource type="Script" path="res://infinite.gd" id="1_qvi4j"]
+[ext_resource type="Texture2D" uid="uid://70l6wx0u7l3e" path="res://bg.png" id="2_yu0vd"]
+[ext_resource type="Script" path="res://PathFollowBehavior.gd" id="3_33684"]
+[ext_resource type="PackedScene" uid="uid://chihnvrma0xuc" path="res://PLAYER.tscn" id="4_noyri"]
+[ext_resource type="PackedScene" uid="uid://bfc1ppql6y7y7" path="res://target.tscn" id="5_1m80t"]
+[ext_resource type="Script" path="res://score_label.gd" id="6_h31ok"]
+
+[sub_resource type="Curve2D" id="Curve2D_mtu0v"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 141.328, 20, 0, 0, 0, 0, 980.178, 20)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_b41k3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 181.456, -300000, 0, 0, 0, 0, 793.228, -200000)
+}
+point_count = 2
+
+[sub_resource type="GDScript" id="GDScript_7vs0h"]
+script/source = "extends Label
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	text = \"Timer 00:00\"  
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Infinite" type="Node2D"]
+script = ExtResource("1_qvi4j")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(557, 342)
+scale = Vector2(0.640625, 0.494375)
+texture = ExtResource("2_yu0vd")
+metadata/_edit_lock_ = true
+
+[node name="MOBTIMER" type="Timer" parent="."]
+autostart = true
+
+[node name="UPMOBPATH" type="Path2D" parent="."]
+position = Vector2(105.891, 106.5)
+scale = Vector2(0.72957, -0.125)
+curve = SubResource("Curve2D_mtu0v")
+
+[node name="BottlePathFollow" type="PathFollow2D" parent="UPMOBPATH"]
+position = Vector2(141.328, 20)
+script = ExtResource("3_33684")
+
+[node name="BOTTOMPATH" type="Path2D" parent="."]
+position = Vector2(38.8495, 206)
+scale = Vector2(0.987296, 1e-05)
+curve = SubResource("Curve2D_b41k3")
+
+[node name="BottlePathFollow" type="PathFollow2D" parent="BOTTOMPATH"]
+position = Vector2(181.456, -300000)
+rotation = 1.56468
+
+[node name="Area2D" parent="." instance=ExtResource("4_noyri")]
+
+[node name="Target" parent="." instance=ExtResource("5_1m80t")]
+
+[node name="USERINTERFACE" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="Label" parent="USERINTERFACE"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 12.0
+offset_right = 146.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 35
+text = "Beer Coins: 0"
+script = ExtResource("6_h31ok")
+
+[node name="Timer" type="Label" parent="USERINTERFACE"]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 46.0
+offset_right = 118.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 35
+text = "Time: "
+script = SubResource("GDScript_7vs0h")
+
+[node name="Timer2" type="Timer" parent="USERINTERFACE"]
+
+[connection signal="timeout" from="MOBTIMER" to="." method="_on_mobtimer_timeout"]
+[connection signal="timeout" from="USERINTERFACE/Timer2" to="." method="_on_timer_2_timeout"]

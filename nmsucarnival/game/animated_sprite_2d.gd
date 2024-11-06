@@ -1,8 +1,8 @@
 extends AnimatedSprite2D
 
 # Reference to the ScoreLabel node in USERINTERFACE
-@onready var ScoreLabel = get_node("/root/MAIN/USERINTERFACE/ScoreLabel")
-@onready var popup = get_node("/root/MAIN/PopupPanel")
+@onready var ScoreLabel = get_node("/root/BeerBottle/USERINTERFACE/ScoreLabel")
+@onready var popup = get_node("/root/BeerBottle/PopupPanel")
 
 func _ready() -> void:
 	if ScoreLabel != null:
@@ -26,7 +26,7 @@ func increase_score():
 	update_score_label()
 
 	# Show popup if the score reaches 25
-	if ScoreManager.get_score() >= 2:
+	if ScoreManager.get_score() == 5:
 		popup.popup_centered()
 		print("Popup displayed!")
 

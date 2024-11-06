@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://cwdmr5ve532ax"]
 
-[ext_resource type="Texture2D" uid="uid://70l6wx0u7l3e" path="res://bg.png" id="1_2uob6"]
-[ext_resource type="Script" path="res://background.gd" id="1_b8hja"]
-[ext_resource type="Script" path="res://PathFollowBehavior.gd" id="3_aujny"]
-[ext_resource type="PackedScene" uid="uid://chihnvrma0xuc" path="res://PLAYER.tscn" id="4_2w2uv"]
-[ext_resource type="PackedScene" path="res://target.tscn" id="5_to67m"]
-[ext_resource type="Script" path="res://score_label.gd" id="6_4hg5r"]
+[ext_resource type="Script" path="res://beer_bottle_shooting.gd" id="1_dow2x"]
+[ext_resource type="Texture2D" uid="uid://70l6wx0u7l3e" path="res://bg.png" id="2_1iap8"]
+[ext_resource type="Script" path="res://PathFollowBehavior.gd" id="3_wy83b"]
+[ext_resource type="PackedScene" uid="uid://chihnvrma0xuc" path="res://PLAYER.tscn" id="4_5cbvm"]
+[ext_resource type="PackedScene" uid="uid://bfc1ppql6y7y7" path="res://target.tscn" id="5_8fshf"]
+[ext_resource type="Script" path="res://score_label.gd" id="6_uavik"]
 
 [sub_resource type="Curve2D" id="Curve2D_mtu0v"]
 _data = {
@@ -31,13 +31,13 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[node name="MAIN" type="Node2D"]
-script = ExtResource("1_b8hja")
+[node name="BeerBottle" type="Node2D"]
+script = ExtResource("1_dow2x")
 
 [node name="Bg" type="Sprite2D" parent="."]
 position = Vector2(557, 342)
 scale = Vector2(0.640625, 0.494375)
-texture = ExtResource("1_2uob6")
+texture = ExtResource("2_1iap8")
 metadata/_edit_lock_ = true
 
 [node name="MOBTIMER" type="Timer" parent="."]
@@ -50,7 +50,7 @@ curve = SubResource("Curve2D_mtu0v")
 
 [node name="BottlePathFollow" type="PathFollow2D" parent="UPMOBPATH"]
 position = Vector2(141.328, 20)
-script = ExtResource("3_aujny")
+script = ExtResource("3_wy83b")
 
 [node name="BOTTOMPATH" type="Path2D" parent="."]
 position = Vector2(38.8495, 206)
@@ -61,9 +61,9 @@ curve = SubResource("Curve2D_b41k3")
 position = Vector2(181.456, -300000)
 rotation = 1.56468
 
-[node name="Area2D" parent="." instance=ExtResource("4_2w2uv")]
+[node name="Area2D" parent="." instance=ExtResource("4_5cbvm")]
 
-[node name="Target" parent="." instance=ExtResource("5_to67m")]
+[node name="Target" parent="." instance=ExtResource("5_8fshf")]
 
 [node name="USERINTERFACE" type="Control" parent="."]
 layout_mode = 3
@@ -79,9 +79,10 @@ offset_right = 146.0
 offset_bottom = 69.0
 theme_override_font_sizes/font_size = 35
 text = "Beer Coins: 0"
-script = ExtResource("6_4hg5r")
+script = ExtResource("6_uavik")
 
 [node name="Timer" type="Label" parent="USERINTERFACE"]
+visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = 46.0
