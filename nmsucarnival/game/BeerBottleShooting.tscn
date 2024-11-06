@@ -97,7 +97,6 @@ script = SubResource("GDScript_7vs0h")
 [node name="PopupPanel" type="PopupPanel" parent="."]
 position = Vector2i(370, 220)
 size = Vector2i(400, 140)
-visible = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PopupPanel"]
 offset_left = 4.0

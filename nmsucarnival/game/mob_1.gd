@@ -2,7 +2,9 @@ extends AnimatedSprite2D
 
 # Reference to the ScoreLabel node in USERINTERFACE
 @onready var ScoreLabel = get_node("/root/BeerBottle/USERINTERFACE/ScoreLabel")
-@onready var popup = get_node("/root/BeerBottle/PopupPanel")
+
+# Define the path to the main menu scene
+const MAIN_MENU_SCENE_PATH = "res://main_menu.tscn"  # Update with the actual path to your main menu scene
 
 func _ready() -> void:
 	if ScoreLabel != null:
@@ -25,14 +27,18 @@ func increase_score():
 	print("Score incremented to:", ScoreManager.get_score())
 	update_score_label()
 
-	# Show popup if the score reaches 25
-	if ScoreManager.get_score() == 2:
-		popup.popup_centered()
-		print("Popup displayed!")
+	# Load the main menu if the target score is reached
+	if ScoreManager.get_score() == 10:
+		print("Target score reached: Returning to Main Menu.")
+		return_to_main_menu()
 
 func update_score_label():
 	if ScoreLabel != null:
-		ScoreLabel.text = "Beer Points: " + str(ScoreManager.get_score()) + " / 25"
+		ScoreLabel.text = "Beer Points: " + str(ScoreManager.get_score()) + " / 10"
 		print("ScoreLabel updated:", ScoreLabel.text)
 	else:
 		print("Error: ScoreLabel node not found in update_score_label function.")
+
+# Function to load the main menu scene
+func return_to_main_menu():
+	get_tree().change_scene_to_file(MAIN_MENU_SCENE_PATH)  # Load the main menu scene
