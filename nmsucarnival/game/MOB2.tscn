@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://55q3hd81dk2j"]
+
+[ext_resource type="Texture2D" uid="uid://cwm7eousytiq8" path="res://brokenglass.png" id="1_k42dt"]
+[ext_resource type="Texture2D" uid="uid://nhpewniu2htj" path="res://bottle.png" id="2_golgt"]
+[ext_resource type="Script" path="res://mob_2.gd" id="3_74ql0"]
+[ext_resource type="AudioStream" uid="uid://c6db5hwd3nyba" path="res://Beer Bottle Breaks - Sound Effect.mp3" id="4_k8156"]
+[ext_resource type="AudioStream" uid="uid://bw6lh1hj1onm4" path="res://Western gun shot  free sound FX.mp3" id="5_6sqdj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_girht"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k42dt")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_golgt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxee8"]
+size = Vector2(62, 104.625)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+gravity_scale = 0.0
+
+[node name="MOB2" type="AnimatedSprite2D" parent="."]
+position = Vector2(86, 97)
+scale = Vector2(0.0675, 0.06625)
+sprite_frames = SubResource("SpriteFrames_girht")
+script = ExtResource("3_74ql0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(85, 92)
+shape = SubResource("RectangleShape2D_fxee8")
+
+[node name="Break" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_k8156")
+
+[node name="Shot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_6sqdj")
+volume_db = -1.405

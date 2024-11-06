@@ -1,8 +1,8 @@
 extends AnimatedSprite2D
 
 # Reference to the ScoreLabel node in USERINTERFACE
-@onready var ScoreLabel = get_node("/root/BeerBottle/USERINTERFACE/ScoreLabel")
-@onready var popup = get_node("/root/BeerBottle/PopupPanel")
+@onready var ScoreLabel = get_node("/root/Infinite/USERINTERFACE/ScoreLabel")
+@onready var popup = get_node("/root/Infinite/PopupPanel")
 
 func _ready() -> void:
 	if ScoreLabel != null:
@@ -25,14 +25,14 @@ func increase_score():
 	print("Score incremented to:", ScoreManager.get_score())
 	update_score_label()
 
-	# Show popup if the score reaches 25
-	if ScoreManager.get_score() == 5:
-		popup.popup_centered()
-		print("Popup displayed!")
+	 #Show popup if the score reaches 25
+	#if ScoreManager.get_score() == 5:
+		#popup.popup_centered()
+		#print("Popup displayed!")
 
 func update_score_label():
 	if ScoreLabel != null:
-		ScoreLabel.text = "Beer Points: " + str(ScoreManager.get_score()) + " / 25"
+		ScoreLabel.text = "Beer Points: " + str(ScoreManager.get_score()) + ""
 		print("ScoreLabel updated:", ScoreLabel.text)
 	else:
 		print("Error: ScoreLabel node not found in update_score_label function.")

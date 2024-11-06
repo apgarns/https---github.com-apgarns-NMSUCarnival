@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var bottle_scene = preload("res://MOB.tscn")  # Load the bottle scene (replace with your actual path)
+@onready var bottle_scene = preload("res://MOB2.tscn")  # Load the bottle scene (replace with your actual path)
 @onready var paths = [$UPMOBPATH, $BOTTOMPATH]  # Array of Path2D nodes to choose from
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgvloraccg362"]
+[gd_scene load_steps=11 format=3 uid="uid://bgvloraccg362"]
 
 [ext_resource type="Script" path="res://infinite.gd" id="1_qvi4j"]
 [ext_resource type="Texture2D" uid="uid://70l6wx0u7l3e" path="res://bg.png" id="2_yu0vd"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://chihnvrma0xuc" path="res://PLAYER.tscn" id="4_noyri"]
 [ext_resource type="PackedScene" uid="uid://bfc1ppql6y7y7" path="res://target.tscn" id="5_1m80t"]
 [ext_resource type="Script" path="res://score_label.gd" id="6_h31ok"]
+[ext_resource type="PackedScene" uid="uid://55q3hd81dk2j" path="res://MOB2.tscn" id="7_kmwu6"]
 
 [sub_resource type="Curve2D" id="Curve2D_mtu0v"]
 _data = {
@@ -93,6 +94,8 @@ text = "Time: "
 script = SubResource("GDScript_7vs0h")
 
 [node name="Timer2" type="Timer" parent="USERINTERFACE"]
+
+[node name="RigidBody2D" parent="." instance=ExtResource("7_kmwu6")]
 
 [connection signal="timeout" from="MOBTIMER" to="." method="_on_mobtimer_timeout"]
 [connection signal="timeout" from="USERINTERFACE/Timer2" to="." method="_on_timer_2_timeout"]
